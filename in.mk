@@ -18,7 +18,7 @@ $(TARGET): $(OBJS)
 rootfs:
 	$(CC) $(CFLAGS) $(INC) $(SRCS) -o init -static -lpthread
 	find init | cpio -o -Hnewc | gzip -9 > ../rootfs.img
-	qemu-system-x86_64 -kernel ../../arch/x86/boot/bzImage -initrd ../rootfs.img
+	#qemu-system-x86_64 -kernel ../../arch/x86/boot/bzImage -initrd ../rootfs.img -curses -append nokaslr -S -s
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
